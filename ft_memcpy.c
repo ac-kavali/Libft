@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: achahi <achahi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/16 10:13:50 by achahi            #+#    #+#             */
-/*   Updated: 2025/10/17 09:26:41 by achahi           ###   ########.fr       */
+/*   Created: 2025/10/17 09:54:49 by achahi            #+#    #+#             */
+/*   Updated: 2025/10/17 10:14:11 by achahi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *ptr, int v, size_t s)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	unsigned char	*arr;
-	size_t			i;
+	unsigned char		*dest_arr;
+	const unsigned char	*src_arr; //the const means that the value cannot change over this pointer.
+	size_t 				i;
 
-	arr = (unsigned char *)ptr;
+	dest_arr = (unsigned char *)dest;
+	src_arr = (const unsigned char *)src;
 	i = 0;
-	while (i < s)
+
+	while (i < n)
 	{
-		arr[i] = (unsigned char)v;
+		dest_arr[i] = (unsigned char)src_arr[i];
 		i++;
 	}
-	return (ptr);
+	return (dest_arr);
 }
