@@ -71,4 +71,4 @@ keys in simple way :
 | No overlap           | both      | both              | no problem      |
 
 ## just remember : 
-#87CEEB *The simplest way to understand unsafe overlap: it occurs when the destination is within the source range and you're copying forward.*
+<span style="color:#87CEEB">The simplest way to understand unsafe overlap: it occurs when the destination is within the source range and you're copying forward.</span>
