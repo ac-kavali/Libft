@@ -37,7 +37,7 @@
             return 0;
         }
     
-## why we use the `void *` type when we treath memory functions ?
+## why we use the `void *` type when we treat memory functions ?
 - the `void *` type means a memory block of unknow type and it called a generic pointer.
 - functions like `memcpy`, `memset`, `memmove`, `memcmp`... are designed to work with any type of data.
 - and for the `void *` of function name it used because every in every function you need to return the original pointer of any type.
