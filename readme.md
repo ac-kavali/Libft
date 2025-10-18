@@ -9,8 +9,7 @@
 - used to inicialize memory bytes with 0 and som other uses 
 
 ## take int 1 and char 'A' like an example
-- if you entred a 1 like a parametre in the memset funtion to fill an array with it will
-- fill each byte with 00000001 = 0x00(hex) then you will get the 16843009 in each int size
+- if you entred a 1 like a parametre in the memset funtion to fill an array with it will fill each byte with 00000001 = 0x00(hex) then you will get the 16843009 in each int size
 - the resault of the test will be 
        16843009, 16843009, 16843009, 16843009, 
         AAAA 
