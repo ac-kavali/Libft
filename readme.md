@@ -69,3 +69,6 @@ keys in simple way :
 | Forward safe overlap | `memmove` | `memcpy` may fail | dest before src |
 | Backward overlap     | `memmove` | `memcpy` may fail | dest after src  |
 | No overlap           | both      | both              | no problem      |
+
+## just remember : 
+#87CEEB *The simplest way to understand unsafe overlap: it occurs when the destination is within the source range and you're copying forward.*
