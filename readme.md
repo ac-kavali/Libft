@@ -44,9 +44,7 @@
 ## what means an **`overlap`**: 
 - Overlap occurs when any memory addresses used by `src` and `dest` are shared, i.e., the ranges intersect,simply "when `src` share memory blocks range with the `dest`"
 ### safe overlap :
-- Safe overlap happens when the memory areas share addresses, but the copy order doesn’t cause corruption.simply when 
-
-    In memcpy(dest, src, n):
+- Safe overlap happens when the memory areas share addresses, but the copy order doesn’t cause corruption in memcpy(dest, src, n):
 
     If src and dest overlap, memcpy can behave unpredictably. Some bytes may get overwritten before they are copied.
 
