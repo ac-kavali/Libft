@@ -1,29 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: achahi <achahi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/17 09:54:49 by achahi            #+#    #+#             */
-/*   Updated: 2025/10/18 21:49:54 by achahi           ###   ########.fr       */
+/*   Created: 2025/10/18 10:00:47 by achahi            #+#    #+#             */
+/*   Updated: 2025/10/18 23:20:53 by achahi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	*ft_memmove(void *dest, const void *src, size_t size)
 {
-	unsigned char		*dest_arr;
-	const unsigned char	*src_arr;
+	unsigned char		*d;
+	const unsigned char	*s;
 	size_t				i;
 
-	dest_arr = (unsigned char *)dest;
-	src_arr = (const unsigned char *)src;
-	while (i < n)
+	d = (unsigned char *)dest;
+	s = (const unsigned char *)src;
+	i = 0;
+	if (src < dest)
 	{
-		dest_arr[i] = (unsigned char)src_arr[i];
-		i++;
+		while (size > 0)
+		{
+			size--;
+			d[size] = (unsigned char)s[size];
+		}
 	}
-	return (dest_arr);
+	if (src > dest)
+	{
+		while (i < size)
+		{
+			d[i] = (unsigned char)s[i];
+			i++;
+		}
+	}
+	return (dest);
 }
