@@ -74,7 +74,7 @@ The simplest way to understand unsafe overlap: it occurs when the destination is
 
 
 
-#### strlcpy: 
+# strlcpy: 
 **Goal**: Copy up to `size - 1` characters from `src` into `dest`, always null-terminating (`\0`) if `size > 0`.
 **Return value:** Always returns the **length of `src`** (the total number of characters in the source string, not the number copied).
 - the case if `dest[]`'s size = 1, When `strlcpy(dest, src, size)` is called, it calculate the dest size, and it copy `size-1` to `dest` ~ 0, and let 1 element for the `\0` then it fill the only element wity `\0`, and will retun the size of `src`.
