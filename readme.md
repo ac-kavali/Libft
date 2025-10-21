@@ -73,6 +73,7 @@ keys in simple way :
 | Forward safe overlap | `memmove` | `memcpy` may fail | dest before src |
 | Backward overlap     | `memmove` | `memcpy` may fail | dest after src  |
 | No overlap           | both      | both              | no problem      |
+
 ##### <span style="color:red;">strlcat </span>: 
 take the src and dest and return the size of the size of dest + src truncated 
 ##### <span style="color:red;">strlcpy </span>: 
@@ -100,4 +101,4 @@ However, if you check manually and return before using `dest`, that avoids the c
 
 
 #### <span class="color-green">Answers Box</span>:
-1. to use it you shoudl include this line : `#include <bsd/string.h>`
+1. to use it you shoudl include this line : `#include <bsd/string.h>`.
