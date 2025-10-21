@@ -73,3 +73,31 @@ keys in simple way :
 | Forward safe overlap | `memmove` | `memcpy` may fail | dest before src |
 | Backward overlap     | `memmove` | `memcpy` may fail | dest after src  |
 | No overlap           | both      | both              | no problem      |
+##### <span style="color:red;">strlcat </span>: 
+take the src and dest and return the size of the size of dest + src truncated 
+##### <span style="color:red;">strlcpy </span>: 
+**Goal**: Copy up to `size - 1` characters from `src` into `dest`, always null-terminating (`\0`) if `size > 0`.
+**Return value:** Always returns the **length of `src`** (the total number of characters in the source string, not the number copied).
+- the case if `dest[]`'s size = 1, When `strlcpy(dest, src, size)` is called, it calculate the dest size, and it copy `size-1` to `dest` ~ 0, and let 1 element for the `\0` then it fill the only element wity `\0`, and will retun the size of `src`.
+- `return value` = `strlen(src);`
+- `strlcpy(dest, src, size)` copies a string **only if `size > 0`**.
+If **either** of these is true, it _returns immediately_ without copying anything:
+- - `dest == NULL` → undefined behavior (the function _should not_ be called with NULL).  
+However, if you check manually and return before using `dest`, that avoids the crash.    
+- `size == 0` → the function doesn’t copy anything, but it **still returns the length of `src`**.
+- hello 
+ 
+
+
+
+#### <span class="color-purple">Question Box</span>:
+1. what is bsd library. 
+- what is casting. 
+
+
+
+
+
+
+#### <span class="color-green">Answers Box</span>:
+1. to use it you shoudl include this line : `#include <bsd/string.h>`
