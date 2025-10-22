@@ -103,7 +103,7 @@ However, if you check manually and return before using `dest`, that avoids the c
 `strlcpy` will **never copy more than the actual length of `src`**, even if the `size` argument allows more space.
 
 
-####strlcat:
+# strlcat:
 The function **`strlcat`** is used to **concatenate (append)** one string to another, but **safely**, by preventing buffer overflows.
 prototype:
 ```c
