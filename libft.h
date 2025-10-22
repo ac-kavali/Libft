@@ -6,14 +6,14 @@
 /*   By: achahi <achahi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 10:17:47 by achahi            #+#    #+#             */
-/*   Updated: 2025/10/16 10:21:29 by achahi           ###   ########.fr       */
+/*   Updated: 2025/10/22 11:12:43 by achahi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <stddef.h>
+# include <stdlib.h>
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
