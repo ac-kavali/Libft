@@ -6,7 +6,7 @@
 /*   By: achahi <achahi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 17:25:43 by achahi            #+#    #+#             */
-/*   Updated: 2025/10/22 18:04:31 by achahi           ###   ########.fr       */
+/*   Updated: 2025/10/23 07:56:55 by achahi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_atoi(const char *str)
 {
-	int i;
-	int sign;
-	int result;
+	int	i;
+	int	sign;
+	int	result;
 
 	i = 0;
 	result = 0;
@@ -36,4 +36,3 @@ int	ft_atoi(const char *str)
 	}
 	return (result * sign);
 }
-
