@@ -133,3 +133,16 @@ if (size <= dst_len)
     return size + src_len;
 ```
 this avoid writting outside the buffer and the return value to used to tell the total size needed to apped next time. 
+
+# Calloc:
+basicaly the libft use just the `malloc` and `memeset` functions in her source code, but you should optimize the calloc to avoid problem with memory like overflows :
+- the function use the type `size_t` that can hold on a `32-bit system`, `size_t` is typically 32 bits, and `SIZE_MAX` is `2^32 - 1` (approximately 4 billions).....on `64bit systems` can up to 1.8 x 10^19 .
+- then in the case of `(nmemb * size)` > `SIZE_MAX` this will cause a buffer overflow.
+- then, optimize your code :
+```c
+if (nmemb != 0 && size > SIZE_MAX / nmemb) //first thing in the code.
+ return NULL;
+```
+
+
+
