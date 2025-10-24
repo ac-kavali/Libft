@@ -7,7 +7,7 @@
 - [What means an **`overlap`**](#what-means-an-overlap)
   - [Safe overlap](#safe-overlap-)
   - [Unsafe overlap](#unsafe-overlap-)
--[strlcpy](# strlcpy)
+- [strlcpy](# strlcpy)
 ----
 # basics
 ## the size_t explaine
