@@ -1,3 +1,16 @@
+# content:
+# basics
+## explain the memset use
+## take int 1 and char 'A' like an example
+## why we use the `void *` type when we treat memory functions ?
+## what means an **`overlap`**: 
+### safe overlap :
+### unsafe overlap :
+# strlcpy:
+# strlcat:
+# Calloc:
+# test your codes: 
+----
 # basics
 ## the size_t explaine
 - unsigned integer type used to represent sizes of objects in memory.
@@ -153,7 +166,7 @@ if the total size is `0`, return `malloc(1)`.
 | so always return a **unique pointer (malloc(1))** for the zero case.
 
 
-## test your codes: 
+# test your codes: 
 #### Project Structure:
 ```pgsql
 mini_project/
