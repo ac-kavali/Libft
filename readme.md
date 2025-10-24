@@ -144,5 +144,11 @@ if (nmemb != 0 && size > SIZE_MAX / nmemb) //first thing in the code.
  return NULL;
 ```
 
+- **calloc(00)**: 
+The return of `malloc(0)` varies by system — it may return `NULL` or a unique pointer.  
+To ensure consistent behavior on all systems, 42 requires handling it manually:  
+if the total size is `0`, return `malloc(1)`.  
+`free(NULL)` is safe, but 42 wants **consistency**, not just correctness
 
+| so always return a **unique pointer (malloc(1))** for the zero case.
 
