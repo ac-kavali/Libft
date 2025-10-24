@@ -6,17 +6,17 @@
 /*   By: achahi <achahi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 20:35:23 by achahi            #+#    #+#             */
-/*   Updated: 2025/10/23 20:03:25 by achahi           ###   ########.fr       */
+/*   Updated: 2025/10/24 22:35:57 by achahi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_strdup(const char *s)
+char	*ft_strdup(const char *s)
 {
 	size_t	i;
 	char	*dup;
-	
+
 	if (!s)
 		return (NULL);
 	i = ft_strlen(s);
@@ -30,6 +30,5 @@ char *ft_strdup(const char *s)
 		i++;
 	}
 	dup[i] = '\0';
-	return dup;
+	return (dup);
 }
-
