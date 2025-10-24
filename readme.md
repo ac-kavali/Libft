@@ -8,7 +8,11 @@
   - [Safe overlap](#safe-overlap-)
   - [Unsafe overlap](#unsafe-overlap-)
 - [strlcpy](#strlcpy)
+- [strlcat](#strlcat)
+- [calloc](#Calloc)
+- [test your codes](#test-your-codes)
 ----
+
 # basics
 ## the size_t explaine
 - unsigned integer type used to represent sizes of objects in memory.
