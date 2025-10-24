@@ -1,15 +1,13 @@
-# content:
-# basics
-## explain the memset use
-## take int 1 and char 'A' like an example
-## why we use the `void *` type when we treat memory functions ?
-## what means an **`overlap`**: 
-### safe overlap :
-### unsafe overlap :
-# strlcpy:
-# strlcat:
-# Calloc:
-# test your codes: 
+# Table of Contents
+
+- [The size_t explained](#the-size_t-explaine)
+- [Explain the memset use](#explain-the-memset-use)
+- [Take int 1 and char 'A' like an example](#take-int-1-and-char-a-like-an-example)
+- [Why we use the `void *` type when we treat memory functions?](#why-we-use-the-void--type-when-we-treat-memory-functions-)
+- [What means an **`overlap`**](#what-means-an-overlap)
+  - [Safe overlap](#safe-overlap-)
+  - [Unsafe overlap](#unsafe-overlap-)
+
 ----
 # basics
 ## the size_t explaine
