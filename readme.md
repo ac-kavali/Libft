@@ -9,9 +9,11 @@
   - [Unsafe overlap](#unsafe-overlap-)
 - [strlcpy](#strlcpy)
 - [strlcat](#strlcat)
-- [calloc](#Calloc)
+- [calloc](#Calloc)\
+- [substr](#substr)
 - [test your codes](#test-your-codes)
-----
+
+---
 
 # basics
 ## the size_t explaine
@@ -50,13 +52,17 @@
             printf("\n");
             return 0;
         }
-    
-## why we use the `void *` type when we treat memory functions ?
+    ```
+---
+
+# why we use the `void *` type when we treat memory functions ?
 - the `void *` type means a memory block of unknow type and it called a generic pointer.
 - functions like `memcpy`, `memset`, `memmove`, `memcmp`... are designed to work with any type of data.
 - and for the `void *` of function name it used because every in every function you need to return the original pointer of any type.
 
-## what means an **`overlap`**: 
+---
+
+# what means an **`overlap`**: 
 - Overlap occurs when any memory addresses used by `src` and `dest` are shared, i.e., the ranges intersect,simply "when `src` share memory blocks range with the `dest`"
 ### safe overlap :
 - Safe overlap happens when the memory areas share addresses, but the copy order doesn’t cause corruption in memcpy.
@@ -87,7 +93,7 @@ keys in simple way :
 
 The simplest way to understand unsafe overlap: it occurs when the destination is within the source range and you're copying forward.
 
-
+---
 
 # strlcpy: 
 **Goal**: Copy up to `size - 1` characters from `src` into `dest`, always null-terminating (`\0`) if `size > 0`.
@@ -116,6 +122,9 @@ However, if you check manually and return before using `dest`, that avoids the c
 	strlcpy(dest, src, sizeof(dest)); // size = 10
 ```
 `strlcpy` will **never copy more than the actual length of `src`**, even if the `size` argument allows more space.
+
+
+---
 
 
 # strlcat:
@@ -149,6 +158,8 @@ if (size <= dst_len)
 ```
 this avoid writting outside the buffer and the return value to used to tell the total size needed to apped next time. 
 
+---
+
 # Calloc:
 basicaly the libft use just the `malloc` and `memeset` functions in her source code, but you should optimize the calloc to avoid problem with memory like overflows :
 - the function use the type `size_t` that can hold on a `32-bit system`, `size_t` is typically 32 bits, and `SIZE_MAX` is `2^32 - 1` (approximately 4 billions).....on `64bit systems` can up to 1.8 x 10^19 .
@@ -167,6 +178,47 @@ if the total size is `0`, return `malloc(1)`.
 
 | so always return a **unique pointer (malloc(1))** for the zero case.
 
+---
+
+#### substr:
+- the prototype :
+```c
+char *ft_substr(char const *s, unsigned int start, size_t len);
+```
+- why `unsigned int` and not `size_t` type for the start index ?:
+`unsigned int` is used because the 42 project subject defines it that way. and some part of reason why mostly we use this type is to stay loyel to other language that use this to like java 
+py... 
+#### special cases :
+- passing a null pointer -> sigfault :
+```c
+if (!s)      //optimize your code with this test.
+	return (NULL);
+```
+
+- **No protection when `start` is bigger than `strlen(s)`**
+```c
+if (start >= s_len)
+	return (ft_strdup(""));
+```
+in this case you should return a empty string not `NULL`.
+using `ft_dup` that will return a pointer to an empty string. 
+
+- If `len`>`s_len - start` 
+```c
+if (len > s_len - start)
+	len = s_len - start);
+```
+this case if not optimized will cause an buffer overflow, we limit the `len` inside the interval of `s_len - start` to not copy something after `\0`.
+### summary
+
+| problem               | Description            | Fix                               |
+| --------------------- | ---------------------- | --------------------------------- |
+| if (len = 0)          | (want an empty str)    | auto allocate 1 for \0            |
+| start >= strlen(s)    | causes segfault        | return an empty string by strdup. |
+| len > s_len-start     | causes buffer overflow | adjsut the len to be in the       |
+| taking `NULL` string. | segfault               | if(!s) return NULL                |
+
+---
 
 # test your codes: 
 #### Project Structure:
