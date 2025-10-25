@@ -6,7 +6,7 @@
 /*   By: achahi <achahi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 21:00:19 by achahi            #+#    #+#             */
-/*   Updated: 2025/10/24 22:39:14 by achahi           ###   ########.fr       */
+/*   Updated: 2025/10/25 18:26:25 by achahi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (!joined)
 		return (NULL);
 	ft_strlcpy(joined, s1, len1 + 1);
-	ft_strlcat(joined, s2, len2 + 1);
+	ft_strlcat(joined, s2, len1 + len2 + 1);
 	return (joined);
 }

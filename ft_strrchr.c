@@ -6,7 +6,7 @@
 /*   By: achahi <achahi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 10:08:48 by achahi            #+#    #+#             */
-/*   Updated: 2025/10/22 10:59:53 by achahi           ###   ########.fr       */
+/*   Updated: 2025/10/25 17:34:02 by achahi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,15 @@ char	*ft_strrchr(const char *s, int c)
 {
 	size_t	i;
 
-	i = 0;
-	while (s[i])
-		i++;
-	while (i >= 0)
+	if (!s)
+		return (NULL);
+	i = ft_strlen(s);
+	while (1)
 	{
 		if (s[i] == (char)c)
 			return ((char *)(s + i));
+		if (i == 0)
+			break ;
 		i--;
 	}
 	return (NULL);
