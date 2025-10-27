@@ -6,7 +6,7 @@
 /*   By: achahi <achahi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 10:00:47 by achahi            #+#    #+#             */
-/*   Updated: 2025/10/18 23:20:53 by achahi           ###   ########.fr       */
+/*   Updated: 2025/10/27 01:03:39 by achahi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	*ft_memmove(void *dest, const void *src, size_t size)
 	const unsigned char	*s;
 	size_t				i;
 
-	d = (unsigned char *)dest;
-	s = (const unsigned char *)src;
+	d = dest;
+	s = src;
 	i = 0;
 	if (src < dest)
 	{
