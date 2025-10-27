@@ -6,7 +6,7 @@
 /*   By: achahi <achahi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 10:17:47 by achahi            #+#    #+#             */
-/*   Updated: 2025/10/26 10:23:44 by achahi           ###   ########.fr       */
+/*   Updated: 2025/10/27 14:29:05 by achahi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,5 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 int		ft_atoi(const char *nptr);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, const char *set);
-
+char	*ft_itoa(int n);
 #endif
