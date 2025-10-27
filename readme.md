@@ -9,7 +9,7 @@
   - [Unsafe overlap](#unsafe-overlap-)
 - [strlcpy](#strlcpy)
 - [strlcat](#strlcat)
-- [calloc](#Calloc)\
+- **[calloc](#Calloc)**
 - [substr](#substr)
 - [test your codes](#test-your-codes)
 
