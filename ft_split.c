@@ -6,13 +6,26 @@
 /*   By: achahi <achahi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 15:30:59 by achahi            #+#    #+#             */
-/*   Updated: 2025/10/27 01:40:49 by achahi           ###   ########.fr       */
+/*   Updated: 2025/10/28 18:21:39 by achahi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_count_word(const char *s, char delim)
+void	free_str(char **words, int w_number)
+{
+	int	i;
+
+	i = 0;
+	while (i < w_number)
+	{
+		free(words[i]);
+		i++;
+	}
+	free(words);
+}
+
+static int	ft_count_word(const char *s, char delim)
 {
 	size_t	i;
 	int		word;
@@ -33,57 +46,57 @@ int	ft_count_word(const char *s, char delim)
 	return (word);
 }
 
-char	*ft_make_str(const char *s, size_t start, size_t end)
+static char	**fill(char *s, char **words_root, char delim, size_t start)
 {
+	size_t	wn;
 	size_t	i;
-	char	*word;
 
 	i = 0;
-	word = (char *)malloc((end - start + 1) * sizeof(char));
-	if (!word)
-		return (NULL);
-	while (start < end)
-		word[i++] = s[start++];
-	word[i] = '\0';
-	return (word);
+	wn = 0;
+	while (s[i])
+	{
+		if (s[i] && s[i] == delim)
+			i++;
+		start = i;
+		while (s[i] && s[i] != delim)
+			i++;
+		if (start < i)
+		{
+			words_root[wn++] = ft_substr(s, start, i - start);
+			if (!(words_root[wn - 1]))
+			{
+				free_str(words_root, wn - 1);
+				return (NULL);
+			}
+		}
+	}
+	words_root[wn] = NULL;
+	return (words_root);
 }
 
-char	**ft_allocate_str(const char *s, char delim)
+static char	**allocate_root(char *s, char delim, size_t start)
 {
-	char	**ptr;
-	size_t	word_count;
+	char	**words_root;
 
-	word_count = ft_count_word(s, delim);
-	ptr = (char **)malloc((word_count + 1) * sizeof(char *));
-	if (!ptr)
+	words_root = malloc((ft_count_word(s, delim) + 1) * (sizeof(char *)));
+	if (!words_root)
 		return (NULL);
-	return (ptr);
+	fill(s, words_root, delim, start);
+	return (words_root);
 }
 
 char	**ft_split(const char *s, char c)
 {
-	size_t	i;
+	char	**words_root;
 	size_t	start;
-	size_t	end;
-	size_t	k;
-	char	**words;
+	char	*str;
 
+	str = (char *)s;
 	if (!s)
 		return (NULL);
-	words = ft_allocate_str(s, c);
-	i = 0;
-	k = 0;
-	while (s[i])
-	{
-		while (s[i] && s[i] == c)
-			i++;
-		start = i;
-		while (s[i] && s[i] != c)
-			i++;
-		end = i;
-		if (start < end)
-			words[k++] = ft_make_str(s, start, end);
-	}
-	words[k] = NULL;
-	return (words);
+	start = 0;
+	words_root = allocate_root(str, c, start);
+	if (!words_root)
+		return (NULL);
+	return (words_root);
 }
