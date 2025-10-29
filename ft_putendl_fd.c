@@ -6,7 +6,7 @@
 /*   By: achahi <achahi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 21:48:13 by achahi            #+#    #+#             */
-/*   Updated: 2025/10/28 22:01:33 by achahi           ###   ########.fr       */
+/*   Updated: 2025/10/29 09:59:10 by achahi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_putendl_fd(char *s, int fd)
 	size_t	i;
 
 	if (!s)
-		return;
+		return ;
 	i = 0;
 	while (s[i])
 	{
