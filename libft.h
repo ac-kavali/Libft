@@ -6,7 +6,7 @@
 /*   By: achahi <achahi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 10:17:47 by achahi            #+#    #+#             */
-/*   Updated: 2025/10/28 12:57:51 by achahi           ###   ########.fr       */
+/*   Updated: 2025/10/28 21:40:46 by achahi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,8 @@ char	*ft_strtrim(char const *s1, const char *set);
 char	*ft_itoa(int n);
 char	**ft_split(const char *s, char c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+void	ft_putchar_fd(char c, int fd);
+void	ft_putstr_fd(char *s, int fd);
+void	ft_putendl_fd(char *s, int fd);
+void	ft_putnbr_fd(int n, int fd);
 #endif
