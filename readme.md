@@ -22,7 +22,7 @@
 -  in sumary it used to specify the size of an objects because it can safly hold any object size and cannot be negative.
 
 ## explain the memset use
-- it a function that assig a value to  a block of memory byte per byte and not type
+- it a function that assigne a value to a block of memory, byte per byte 
 - used to inicialize memory bytes with 0 and som other uses 
 
 ## take int 1 and char 'A' like an example
