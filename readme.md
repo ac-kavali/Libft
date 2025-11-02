@@ -19,7 +19,7 @@
 ## the size_t explaine
 - unsigned integer type used to represent sizes of objects in memory.
 - It’s guaranteed to be big enough to store the size of the largest possible object your system can handle.
--  in sumary it used to specify the size of an objects because it can safly hold ony object size and cannot be negative.
+-  in sumary it used to specify the size of an objects because it can safly hold any object size and cannot be negative.
 
 ## explain the memset use
 - it a function that assig a value to  a block of memory byte per byte and not type
