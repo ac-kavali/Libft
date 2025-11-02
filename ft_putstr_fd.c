@@ -6,7 +6,7 @@
 /*   By: achahi <achahi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 21:38:21 by achahi            #+#    #+#             */
-/*   Updated: 2025/10/29 09:55:40 by achahi           ###   ########.fr       */
+/*   Updated: 2025/11/01 21:53:27 by achahi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	size	i;
+	size_t	i;
 
 	if (!s)
 		return ;

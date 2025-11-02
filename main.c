@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: achahi <achahi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 07:54:28 by achahi            #+#    #+#             */
-/*   Updated: 2025/11/01 21:43:10 by achahi           ###   ########.fr       */
+/*   Created: 2025/11/01 22:24:24 by achahi            #+#    #+#             */
+/*   Updated: 2025/11/01 22:26:31 by achahi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-void	*ft_calloc(size_t nmemb, size_t size)
+//test additional functions here
+int main(void)
 {
-	void	*ptr;
-
-	if (size != 0 && nmemb > (size_t)-1 / size)
-		return (NULL);
-	if (nmemb == 0 || size == 0)
-		return (malloc(1));
-	ptr = malloc(nmemb * size);
-	if (!ptr)
-		return (NULL);
-	ft_memset(ptr, 0, nmemb * size);
-	return (ptr);
+	// Example usage of ft_strjoin
+	char *s1 = "Hello, ";
+	char *s2 = "World!";
+	char *result = ft_strjoin(s1, s2);
+	if (result)
+	{
+		printf("ft_strjoin result: %s\n", result);
+		free(result);
+	}
+	return (0);
 }

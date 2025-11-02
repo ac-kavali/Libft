@@ -6,7 +6,7 @@
 /*   By: achahi <achahi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 10:17:47 by achahi            #+#    #+#             */
-/*   Updated: 2025/10/31 21:17:59 by achahi           ###   ########.fr       */
+/*   Updated: 2025/11/01 21:51:04 by achahi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 # define LIBFT_H
 
 # include <stdlib.h>
-# include <stdint.h>
+# include <unistd.h>
+# include <stddef.h>
 
 typedef struct s_list
 {
