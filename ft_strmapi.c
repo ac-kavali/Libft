@@ -6,7 +6,7 @@
 /*   By: achahi <achahi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 09:21:49 by achahi            #+#    #+#             */
-/*   Updated: 2025/10/28 09:22:27 by achahi           ###   ########.fr       */
+/*   Updated: 2025/11/03 16:04:30 by achahi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	if (!s || !f)
 		return (NULL);
 	len = ft_strlen(s);
-	new_s = (char *)malloc(len + 1);
+	new_s = (char *)malloc(sizeof(char) *(len + 1));
 	if (!new_s)
 		return (NULL);
 	i = 0;

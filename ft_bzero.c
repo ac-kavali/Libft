@@ -6,20 +6,20 @@
 /*   By: achahi <achahi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 10:13:50 by achahi            #+#    #+#             */
-/*   Updated: 2025/10/17 09:27:54 by achahi           ###   ########.fr       */
+/*   Updated: 2025/11/03 19:05:19 by achahi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *str, size_t s)
+void	ft_bzero(void *s, size_t n)
 {
 	unsigned char	*arr;
 	size_t			i;
 
-	arr = (unsigned char *)str;
+	arr = (unsigned char *)s;
 	i = 0;
-	while (i < s)
+	while (i < n)
 	{
 		arr[i] = 0;
 		i++;

@@ -6,15 +6,15 @@
 /*   By: achahi <achahi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 09:50:06 by achahi            #+#    #+#             */
-/*   Updated: 2025/10/16 11:48:34 by achahi           ###   ########.fr       */
+/*   Updated: 2025/11/03 19:32:13 by achahi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isdigit(int n)
+int	ft_isdigit(int c)
 {
-	if (n >= 48 && n <= 57)
+	if (c >= 48 && c <= 57)
 	{
 		return (1);
 	}

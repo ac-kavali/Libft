@@ -6,7 +6,7 @@
 /*   By: achahi <achahi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 09:54:49 by achahi            #+#    #+#             */
-/*   Updated: 2025/10/18 21:49:54 by achahi           ###   ########.fr       */
+/*   Updated: 2025/11/03 19:07:38 by achahi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,15 @@
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	unsigned char		*dest_arr;
-	const unsigned char	*src_arr;
-	size_t				i;
+	size_t	i;
 
-	dest_arr = (unsigned char *)dest;
-	src_arr = (const unsigned char *)src;
+	if (!dest)
+		return (NULL);
+	i = 0;
 	while (i < n)
 	{
-		dest_arr[i] = (unsigned char)src_arr[i];
+		*(char *)(dest + i) = *(char *)(src + i);
 		i++;
 	}
-	return (dest_arr);
+	return (dest);
 }

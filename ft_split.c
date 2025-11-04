@@ -6,13 +6,13 @@
 /*   By: achahi <achahi@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 15:30:59 by achahi            #+#    #+#             */
-/*   Updated: 2025/10/28 18:21:39 by achahi           ###   ########.fr       */
+/*   Updated: 2025/11/03 19:35:21 by achahi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	free_str(char **words, int w_number)
+static void	free_str(char **words, int w_number)
 {
 	int	i;
 
@@ -85,7 +85,7 @@ static char	**allocate_root(char *s, char delim, size_t start)
 	return (words_root);
 }
 
-char	**ft_split(const char *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char	**words_root;
 	size_t	start;
