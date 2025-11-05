@@ -41,8 +41,14 @@ These terms describe how a computer stores multi-byte values in memory:
 
 | Term              | Meaning                                                                                                                                 |
 | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| **Big-endian**    | Most Significant Byte (MSB) is stored **at the lowest memory address**. The number is read left to right in memory.                    |
-| **Little-endian** | Least Significant Byte (LSB) is stored **at the lowest memory address**. The number is read right to left in memory. (used by modern systems) |
+| **Big-endian**    | Most Significant Byte (MSB) is stored **at the lowest memory address**. Bytes are stored in their natural order.                    |
+| **Little-endian** | Least Significant Byte (LSB) is stored **at the lowest memory address**. Bytes are stored in reverse order. (used by modern systems) |
+
+**Important Note:** Endianness only affects the **byte order**, not the bit order within each byte. Bits within a single byte are always read the same way in both systems.
+
+**Example:** The number `0x12345678` in memory:
+- **Big-endian**: `0x12 0x34 0x56 0x78` (MSB first)
+- **Little-endian**: `0x78 0x56 0x34 0x12` (LSB first)
 
 **How char is read:**
 - Index 0 is **always the first character**.  
