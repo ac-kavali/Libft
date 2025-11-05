@@ -13,6 +13,10 @@
 - [Static and Dynamic Library](#static-and-dynamic-library)
 - [Libraries Include](#libraries-include)
 - [Library Define Guard](#library-define-guard)
+- [strlcpy](#strlcpy)
+- [strlcat](#strlcat)
+- [calloc](#calloc)
+- [substr](#substr)
 
 ---
 
@@ -225,5 +229,141 @@ The preprocessor can consider it as an error:
 ```c
 error: redefinition of 'ft_putstr'
 ```
+
+---
+
+## strlcpy
+
+**Goal**: Copy up to `size - 1` characters from `src` into `dest`, always null-terminating (`\0`) if `size > 0`.
+
+**Return value:** Always returns the **length of `src`** (the total number of characters in the source string, not the number copied).
+
+- The case if `dest[]`'s size = 1: When `strlcpy(dest, src, size)` is called, it calculates the dest size, and it copies `size-1` to `dest` (0 characters), and leaves 1 element for the `\0`, then it fills the only element with `\0`, and will return the size of `src`.
+- `return value` = `strlen(src);`
+- `strlcpy(dest, src, size)` copies a string **only if `size > 0`**.
+
+If **either** of these is true, it _returns immediately_ without copying anything:
+- `dest == NULL` → undefined behavior (the function _should not_ be called with NULL). However, if you check manually and return before using `dest`, that avoids the crash.
+- `size == 0` → the function doesn't copy anything, but it **still returns the length of `src`**.
+
+### Case 1:
+```c
+char dest[3];
+char src[] = "hello world\n";
+strlcpy(dest, src, 5);  // size argument = 5
+```
+Here the `strlcpy` will not know magically what is the real size of dest. It knows this just from the argument entered by the function call. It will try to copy 5 elements and this causes a buffer overflow.
+
+### Case 2:
+```c
+char dest[10];
+char src[] = "abc"; // src_len = 3
+strlcpy(dest, src, sizeof(dest)); // size = 10
+```
+`strlcpy` will **never copy more than the actual length of `src`**, even if the `size` argument allows more space.
+
+---
+
+## strlcat
+
+The function **`strlcat`** is used to **concatenate (append)** one string to another, but **safely**, by preventing buffer overflows.
+
+**Prototype:**
+```c
+size_t strlcat(char *dst, const char *src, size_t size);
+```
+
+- The loop of `strlcat` continues until one of these two conditions is met:
+```c
+while (src[i] && (dst_len + i) < (size - 1))
+```
+
+- It completely depends on the size given in the arguments — if the user sets a size larger than the destination buffer, an overflow will occur.
+
+```c
+char dest[5] = "abc";
+ft_strlcat(dest, "defghijkl", 20);  // ❌ dangerous
+```
+
+- Remember to use:
+```c 
+dst[dst_len + i] = '\0'; // ❌ NOT dst[size-1] = '\0'
+```
+Because using `dst[size-1] = '\0'` will cause undefined behaviors if `src + dest < size`.
+
+- You return the `src_len` + `dst_len` to compare it with the final `dest` to know if the append was corrupted.
+
+- Optimize the code with the case if the `size <= dst_len`, it should return `size + src_len`:
+```c
+if (size <= dst_len)
+    return size + src_len;
+```
+This avoids writing outside the buffer and the return value is used to tell the total size needed to append next time.
+
+---
+
+## calloc
+
+Basically libft uses just the `malloc` and `memset` functions in its source code, but you should optimize calloc to avoid problems with memory like overflows:
+
+- The function uses the type `size_t` that can hold on a `32-bit system`, `size_t` is typically 32 bits, and `SIZE_MAX` is `2^32 - 1` (approximately 4 billion). On `64-bit systems` it can be up to 1.8 x 10^19.
+- Then in the case of `(nmemb * size)` > `SIZE_MAX`, this will cause a buffer overflow.
+- Then, optimize your code:
+```c
+if (nmemb != 0 && size > SIZE_MAX / nmemb) // first thing in the code
+    return NULL;
+```
+
+### calloc(0, 0):
+The return of `malloc(0)` varies by system — it may return `NULL` or a unique pointer.  
+To ensure consistent behavior on all systems, 42 requires handling it manually:  
+If the total size is `0`, return `malloc(1)`.  
+`free(NULL)` is safe, but 42 wants **consistency**, not just correctness.
+
+**Always return a unique pointer (malloc(1)) for the zero case.**
+
+---
+
+## substr
+
+**Prototype:**
+```c
+char *ft_substr(char const *s, unsigned int start, size_t len);
+```
+
+### Why `unsigned int` and not `size_t` type for the start index?
+`unsigned int` is used because the 42 project subject defines it that way. Part of the reason why we mostly use this type is to stay loyal to other languages that use this too like Java, Python, etc.
+
+### Special Cases:
+
+**1. Passing a null pointer → segfault:**
+```c
+if (!s)      // optimize your code with this test
+    return (NULL);
+```
+
+**2. No protection when `start` is bigger than `strlen(s)`:**
+```c
+if (start >= s_len)
+    return (ft_strdup(""));
+```
+In this case you should return an empty string, not `NULL`.  
+Using `ft_strdup` will return a pointer to an empty string.
+
+**3. If `len` > `s_len - start`:**
+```c
+if (len > s_len - start)
+    len = s_len - start;
+```
+This case if not optimized will cause a buffer overflow. We limit the `len` inside the interval of `s_len - start` to not copy something after `\0`.
+
+### Summary
+
+| Problem               | Description            | Fix                                         |
+| --------------------- | ---------------------- | ------------------------------------------- |
+| if (len = 0)          | (want an empty str)    | auto allocate 1 for \0                      |
+| start >= strlen(s)    | causes segfault        | return an empty string by strdup            |
+| len > s_len-start     | causes buffer overflow | adjust the len to be in the valid range     |
+| taking `NULL` string  | segfault               | if(!s) return NULL                          |
 
 ---
