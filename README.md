@@ -20,6 +20,8 @@
 
 ---
 
+![[img.png]]
+
 ## Casting
 
 **Casting** in C is explicitly converting a value from one data type to another.
