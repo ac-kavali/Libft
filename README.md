@@ -172,6 +172,10 @@ Take the librarian as an example: when you want to access a book, you should ask
   ```
 
 ---
+## C Compilation Steps:
+1️⃣ Preprocessing → handles #include, #define, removes comments
+2️⃣ Compilation + Assembly → C code → assembly → machine code (.o)
+3️⃣ Linking → combines object files + libraries → final binary
 
 ## Static and Dynamic Library
 
